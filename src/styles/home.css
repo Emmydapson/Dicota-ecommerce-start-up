@@ -1,0 +1,62 @@
+
+.bg1_section{
+    background: var(--bg1-bg);
+
+}
+
+.bg1_section h2{
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 20px 0px;
+}
+
+.bg1_section p{
+    color: var(--primary-color);
+    line-height: 28px;
+}
+
+.bg1_section p:nth-child(1){
+    font-weight: 500;
+}
+
+.buy_btn {
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color:#fff;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 40px;
+}
+
+.buy_btn a:hover{
+color: #fff;
+}
+
+.bg1_content {
+    padding-top: 45px;
+}
+
+.timer_count{
+    background: var(--primary-color);
+    height: 300px;
+}
+
+.timer_count img {
+    width: 70% !important;
+    height: 70% !important;
+    object-fit: contain;
+}
+
+.store_btn {
+    background: #fff;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.store_btn a:hover{
+    color: var(--primary-color);
+}
