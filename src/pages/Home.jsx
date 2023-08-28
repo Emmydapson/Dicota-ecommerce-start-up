@@ -94,7 +94,7 @@ const Home = () => {
       </Container>
     </section>
 
-    <section className="new_arrival">
+    <section className="new_arrivals">
       <Container>
 
       </Container>
