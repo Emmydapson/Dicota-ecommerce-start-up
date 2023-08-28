@@ -30,9 +30,6 @@ const Header = () => {
             <div className='nav_wrapper'>
                 <div className='logo'>
                     <img src= "https://www.dicota.com/media/logo/websites/1/footer_white_1.png" alt='logo' />
-                    <div>
-                        <p>Since 2023</p>
-                    </div>
                 </div>
 
                 <div className='navigation'>
