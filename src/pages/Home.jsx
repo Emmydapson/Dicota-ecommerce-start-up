@@ -15,12 +15,19 @@ import Clock from "../components/UI/Clock";
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([])
+  const [wireProducts, setwireProducts] = useState([])
   
   const year = new Date().getFullYear();
 
   useEffect(()=>{
     const filteredTrendingProducts = products.filter((item) => item.Category === 'Backpack');
+    
     const filteredBestSalesProducts = products.filter((item) => item.Category === 'Charger ');
+
+    const filteredMobileProducts = products.filter((item) => item.Category === 'Sleeves');
+
+    const filteredWirelessProducts = products.filter((item) => item.Category === 'Lightening Cable');
 
     
     setTrendingProducts(filteredTrendingProducts);
@@ -96,7 +103,11 @@ const Home = () => {
 
     <section className="new_arrivals">
       <Container>
-
+      <Row>
+          <Col lg='12' className='text-center'>
+            <h2 className='section_title'>New arrivals</h2>
+          </Col>
+        </Row>
       </Container>
     </section>
 
