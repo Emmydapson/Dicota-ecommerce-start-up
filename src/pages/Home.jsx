@@ -16,7 +16,7 @@ const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
   const [mobileProducts, setMobileProducts] = useState([])
-  const [wireProducts, setwireProducts] = useState([])
+  const [wiredProducts, setWiredProducts] = useState([])
   
   const year = new Date().getFullYear();
 
@@ -27,11 +27,13 @@ const Home = () => {
 
     const filteredMobileProducts = products.filter((item) => item.Category === 'Sleeves');
 
-    const filteredWirelessProducts = products.filter((item) => item.Category === 'Lightening Cable');
+    const filteredWiredProducts = products.filter((item) => item.Category === 'Lightening Cable');
 
     
     setTrendingProducts(filteredTrendingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWiredProducts(filteredWiredProducts);
   }, []);
   return (<Helmet title={"Home"}>
     <section className='bg1_section'>
@@ -107,6 +109,8 @@ const Home = () => {
           <Col lg='12' className='text-center'>
             <h2 className='section_title'>New arrivals</h2>
           </Col>
+          <ProductsList data={mobileProducts}/>
+          <ProductsList data={wiredProducts}/>
         </Row>
       </Container>
     </section>
