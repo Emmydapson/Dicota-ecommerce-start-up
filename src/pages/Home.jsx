@@ -22,15 +22,15 @@ const Home = () => {
   const year = new Date().getFullYear();
 
   useEffect(()=>{
-    const filteredTrendingProducts = products.filter((item) => item.Category === 'Backpack');
+    const filteredTrendingProducts = products.filter((item) => item.Category === 'backpack');
     
-    const filteredBestSalesProducts = products.filter((item) => item.Category === 'Charger ');
+    const filteredBestSalesProducts = products.filter((item) => item.Category === 'charger');
 
-    const filteredMobileProducts = products.filter((item) => item.Category === 'Silicone Cable');
+    const filteredMobileProducts = products.filter((item) => item.Category === 'silicone cable');
 
-    const filteredWiredProducts = products.filter((item) => item.Category === 'Lightening Cable');
+    const filteredWiredProducts = products.filter((item) => item.Category === 'lightening cable');
 
-    const filteredPopularProducts = products.filter((item) => item.Category === 'Sleeve ');
+    const filteredPopularProducts = products.filter((item) => item.Category === 'sleeve');
 
     
     setTrendingProducts(filteredTrendingProducts);

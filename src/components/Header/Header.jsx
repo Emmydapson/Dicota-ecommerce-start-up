@@ -2,7 +2,7 @@ import React,{useRef, useEffect} from 'react'
 import './Header.css'
 import {FaHeart, FaShoppingCart, FaUser} from 'react-icons/fa';
 import { motion } from 'framer-motion';
-
+import { UseSelector, useSelector } from 'react-redux';
 
 import { Container, Row } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
@@ -27,7 +27,7 @@ const Header = () => {
     
 
         const headerRef = useRef(null);
-
+        const totalQuantity = useSelector(state=> state.cart.totalQuantity)
         const menuRef = useRef(null)
 
         const stickyHeaderFunc = () => {
@@ -73,7 +73,7 @@ useEffect(() => {
                     </span>
                     
                     <span className='cart_icon'><FaShoppingCart  />
-                    <span className='badge'>1</span>
+                    <span className='badge'>{totalQuantity}</span>
                     </span>
                     <motion.span whileTap={{scale:1.2}} className='cart_icon'  ><FaUser  /></motion.span>
 
