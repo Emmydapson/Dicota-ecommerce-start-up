@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { UseSelector, useSelector } from 'react-redux';
 
 import { Container, Row } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const nav_links = [
     {
@@ -24,12 +24,10 @@ const nav_links = [
 
 const Header = () => {
 
-    
-
         const headerRef = useRef(null);
         const totalQuantity = useSelector(state=> state.cart.totalQuantity)
         const menuRef = useRef(null)
-
+        const navigate = useNavigate()
         const stickyHeaderFunc = () => {
             window.addEventListener('scroll', ()=>{
                 if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
@@ -48,6 +46,11 @@ useEffect(() => {
 });
 
     const menuToggle = () => menuRef.current.classList.toggle('active_menu')
+  
+    const navigateToCart =()=> {
+            navigate("/cart");
+    }
+  
   return <header className='header' ref={headerRef}>
     <Container>
         <Row>
@@ -72,7 +75,7 @@ useEffect(() => {
                     <span className='badge'>1</span>
                     </span>
                     
-                    <span className='cart_icon'><FaShoppingCart  />
+                    <span className='cart_icon' onClick={navigateToCart}><FaShoppingCart  />
                     <span className='badge'>{totalQuantity}</span>
                     </span>
                     <motion.span whileTap={{scale:1.2}} className='cart_icon'  ><FaUser  /></motion.span>
