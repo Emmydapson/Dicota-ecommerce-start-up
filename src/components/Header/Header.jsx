@@ -1,11 +1,16 @@
 import React,{useRef, useEffect} from 'react'
 import './Header.css'
-import {FaHeart, FaShoppingCart, FaUser} from 'react-icons/fa';
+import {FaHeart, FaShoppingCart,} from 'react-icons/fa';
+import userIcon from '../../assets/images/user-icon.png';
 import { motion } from 'framer-motion';
-import { UseSelector, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
+import useAuth from '../../custom-hooks/useAuth';
 
 import { Container, Row } from 'reactstrap';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase config';
+import { toast } from 'react-toastify';
 
 const nav_links = [
     {
@@ -26,8 +31,11 @@ const Header = () => {
 
         const headerRef = useRef(null);
         const totalQuantity = useSelector(state=> state.cart.totalQuantity)
+        const profileActionRef = useRef(null)
         const menuRef = useRef(null)
-        const navigate = useNavigate()
+        const navigate = useNavigate(null)
+        const {currentUser} = useAuth(null)
+
         const stickyHeaderFunc = () => {
             window.addEventListener('scroll', ()=>{
                 if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
@@ -37,6 +45,14 @@ const Header = () => {
                 }
             });
         };
+
+        const logout = ()=> {
+            signOut(auth).then(()=> {
+                toast.success('Logged out')
+            }).catch(err=> {
+                toast.error(err.message)
+            })
+        }
     
 
 useEffect(() => {
@@ -50,6 +66,8 @@ useEffect(() => {
     const navigateToCart =()=> {
             navigate("/cart");
     }
+
+    const toggleProfileActions = () => profileActionRef.current.classList.toggle('show_profileActions')
   
   return <header className='header' ref={headerRef}>
     <Container>
@@ -78,7 +96,24 @@ useEffect(() => {
                     <span className='cart_icon' onClick={navigateToCart}><FaShoppingCart  />
                     <span className='badge'>{totalQuantity}</span>
                     </span>
-                    <motion.span whileTap={{scale:1.2}} className='cart_icon'  ><FaUser  /></motion.span>
+                    <div className='profile'>
+                    < motion.img 
+                    whileTap={{scale:1.2}} src={currentUser ? currentUser.photoURL : userIcon} alt=''
+                    onClick={toggleProfileActions}
+                    />
+
+                    <div className='profile_actions' ref={profileActionRef} onClick={toggleProfileActions}>
+                        {
+                            currentUser ? <span onClick={logout}>Logout</span> : 
+                            <div>
+                                 <Link to='/signup'>Signup</Link>
+                                 <Link to='/login'>Login</Link>
+                            
+                             </div>
+                        }
+                    </div>
+                    </div>
+                    
 
                     <div className='mobile_menu'>
                         <span onClick={menuToggle}>

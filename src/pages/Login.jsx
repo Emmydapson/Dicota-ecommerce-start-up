@@ -38,8 +38,8 @@ const Login = () => {
         <Container>
           <Row>
             {
-              loading ? <col lg='12'
-              className='text-center'><h5 className='fw-bold mb-4'>loading.....</h5></col>
+              loading ? <Col lg='12'
+              className='text-center'><h5 className='fw-bold mb-4'>loading.....</h5></Col>
               : <Col lg='6' className='m-auto text-center'>
               <h3 className='fw-bold mb-4'>Login</h3>
 

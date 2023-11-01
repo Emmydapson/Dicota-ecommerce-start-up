@@ -7,7 +7,7 @@ import Signup from '../pages/Signup';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Checkout from '../pages/Checkout';
 import Login from '../pages/Login';
-
+import  ProtectedRoute  from "../routers/ProtectedRoute";
 const Routers = () => {
   return (
   <Routes>
@@ -16,7 +16,10 @@ const Routers = () => {
     <Route path='/shop' element={<Shop/>} />
     <Route path='/productdetail' element={<ProductDetails/>} />
     <Route path='/cart' element={<Cart/>} />
-    <Route path='/checkout' element={<Checkout/>} />
+    <Route path='/checkout' element=
+    {<ProtectedRoute>
+      <Checkout />
+      </ProtectedRoute>} />
     <Route path='/login' element={<Login/>} />
     <Route path='/signup' element={<Signup/>} />
   </Routes>
